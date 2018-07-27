@@ -64,10 +64,12 @@ class UpdateCartItem extends React.Component {
                 <div className="cart-item-price">
                     {beautifyCurrency(price)}
                 </div>
-                <button
-                    onClick={this.handleClick}>
-                    Remove Item
-                </button>
+                <div className="cart-item-remove">
+                    <button
+                        onClick={this.handleClick}>
+                        Remove Item
+                    </button>
+                </div>
             </div>
         );
     }
