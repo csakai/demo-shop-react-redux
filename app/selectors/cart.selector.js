@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
-
-export const shopItemsSelector = state => state.items.data;
+import { itemsSelector as shopItemsSelector } from './shop.selector';
+import beautifyCurrency from '../util/beautifyCurrency';
 
 export const cartItemsSelector = state => state.cart.items;
 
@@ -32,7 +32,7 @@ export const cartItemsWithDetailsSelector = createSelector(
 );
 
 const _createValueDisplaySelector = valueFn =>
-    state => `$${valueFn(state).toFixed(2)}`;
+    state => beautifyCurrency(valueFn(state));
 
 const cartItemsSubtotalSelector = createSelector(
     cartItemsWithDetailsSelector,
@@ -61,14 +61,7 @@ const cartItemsTotalSelector = createSelector(
     }
 );
 
-export const [
-    cartItemsSubtotalDisplaySelector,
-    cartItemsTaxDisplaySelector,
-    cartItemsShippingDisplaySelector,
-    cartItemsTotalDisplaySelector
-] = [
-    cartItemsSubtotalSelector,
-    cartItemsTaxSelector,
-    cartItemsShippingSelector,
-    cartItemsTotalSelector
-].map(_createValueDisplaySelector)
+export const cartItemsSubtotalDisplaySelector = _createValueDisplaySelector(cartItemsSubtotalSelector);
+export const cartItemsTaxDisplaySelector = _createValueDisplaySelector(cartItemsTaxSelector);
+export const cartItemsShippingDisplaySelector = _createValueDisplaySelector(cartItemsShippingSelector);
+export const cartItemsTotalDisplaySelector = _createValueDisplaySelector(cartItemsTotalSelector);

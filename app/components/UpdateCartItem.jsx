@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import beautifyCurrency from '../util/beautifyCurrency';
+
 class UpdateCartItem extends React.Component {
     constructor(props) {
         super(props);
@@ -60,7 +62,7 @@ class UpdateCartItem extends React.Component {
                     }
                 </div>
                 <div className="cart-item-price">
-                    {`$${price}`}
+                    {beautifyCurrency(price)}
                 </div>
                 <button
                     onClick={this.handleClick}>
