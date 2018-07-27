@@ -11,8 +11,12 @@ class AddToCart extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
     handleChange(event) {
+        let newValue = Number.parseInt(event.target.value, 10);
+        if (newValue < 1) {
+            newValue = 1;
+        }
         this.setState({
-            quantity: event.target.value
+            quantity: newValue
         });
     }
     handleClick() {
