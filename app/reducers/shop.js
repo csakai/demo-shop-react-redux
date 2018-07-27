@@ -4,7 +4,7 @@ const ITEMS_REQUEST_SUCCESS = 'ITEMS_REQUEST_SUCCESS';
 const ITEMS_REQUEST_FAILURE = 'ITEMS_REQUEST_FAILURE';
 
 const initialState = {
-    data: [],
+    items: [],
     error: null,
     loading: false
 };
@@ -29,19 +29,19 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ITEMS_REQUEST:
             return {
-                data: [],
+                items: [],
                 error: null,
                 loading: true
             };
         case ITEMS_REQUEST_SUCCESS:
             return {
-                data: action.payload,
+                items: action.payload,
                 error: null,
                 loading: false
             };
         case ITEMS_REQUEST_FAILURE:
             return {
-                data: [],
+                items: [],
                 error: action.error,
                 loading: false
             };

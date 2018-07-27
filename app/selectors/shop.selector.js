@@ -1,1 +1,2 @@
-export const itemsSelector = state => state.items.data;
+export const itemsSelector = state => state.shop.items;
+export const loadingSelector = state => state.shop.loading;
