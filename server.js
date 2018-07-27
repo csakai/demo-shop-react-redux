@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
+const setup = require('./mock-api');
 
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
@@ -20,7 +21,8 @@ new WebpackDevServer(webpack(config), {
       timings: false,
       chunks: false,
       chunkModules: false
-    }
+    },
+    setup
 }).listen(3000, 'localhost', function (err) {
     if (err) {
         console.log(err);
