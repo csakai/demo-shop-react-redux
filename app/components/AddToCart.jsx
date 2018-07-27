@@ -7,14 +7,10 @@ class AddToCart extends React.Component {
         this.state = {
             quantity: 1
         };
-        this.handleChange = this.handleChange.bind(this);
+        this.handleQuantityChange = this.handleQuantityChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
-    handleChange(event) {
-        let newValue = Number.parseInt(event.target.value, 10);
-        if (newValue < 1) {
-            newValue = 1;
-        }
+    handleQuantityChange(newValue) {
         this.setState({
             quantity: newValue
         });
@@ -34,16 +30,18 @@ class AddToCart extends React.Component {
         const { quantity } = this.state;
         return (
             <div>
-                <input type="number"
-                    value={quantity}
-                    step="1"
-                    min="1"
-                    onChange={this.handleChange}
-                />
-                <button
-                    onClick={this.handleClick}>
-                    Add To Cart
-                </button>
+                <div className="item-quantity">
+                    <QuantityStepper
+                        onChange={this.handleQuantityChange}
+                        quantity={quantity}
+                    />
+                </div>
+                <div className="item-cart-add">
+                    <button
+                        onClick={this.handleClick}>
+                        Add To Cart
+                    </button>
+                </div>
             </div>
         );
     }
