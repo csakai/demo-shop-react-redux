@@ -18,11 +18,12 @@ class QuantityStepper extends React.Component {
     }
 
     render() {
-        const { quantity } = this.props;
+        const { isDisabled, quantity } = this.props;
 
         return (
             <input
                 className="item-quantity-stepper"
+                disabled={isDisabled}
                 type="number"
                 step="1"
                 min="1"
@@ -34,6 +35,7 @@ class QuantityStepper extends React.Component {
 }
 
 QuantityStepper.propTypes = {
+    isDisabled: PropTypes.bool,
     onChange: PropTypes.func,
     quantity: PropTypes.number
 };
