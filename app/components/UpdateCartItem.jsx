@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import beautifyCurrency from '../util/beautifyCurrency';
 import QuantityStepper from './QuantityStepper.jsx';
