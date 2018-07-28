@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { itemsSelector as shopItemsSelector } from '../selectors/shop.selector';
 
-import ShopItemList from '../components/ShopItemList.jsx';
+import ShopItemList from '../components/shop/ShopItemList.jsx';
 
 const mapStateToProps = state => ({
     items: shopItemsSelector(state)

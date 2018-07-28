@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import beautifyCurrency from '../util/beautifyCurrency';
-import AddToCart from '../containers/ConnectedAddToCart.jsx';
+import beautifyCurrency from '../../util/beautifyCurrency';
+import AddToCart from '../../containers/ConnectedAddToCart.jsx';
 
 const ShopItem = ({item}) => (
     <div className="shop-item-container">
