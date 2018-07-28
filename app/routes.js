@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import FilterableTable from './containers/FilterableTable';
-import About from './components/About';
+import ShopPage from './containers/ConnectedShopPage.jsx';
+import ItemDetailPage from './containers/ConnectedItemDetailPage.jsx';
+import CartPage from './containers/ConnectedCartPage.jsx';
 
 export default (
-	<Switch>
-		<Route exact path="/" component={FilterableTable} />
-		<Route path="/about" component={About} />
-	</Switch>
+    <Switch>
+        <Route exact path="/" component={ShopPage} />
+        <Route exact path="/detail/:id" component={ItemDetailPage} />
+        <Route exact path="/cart" component={CartPage} />
+    </Switch>
 );
