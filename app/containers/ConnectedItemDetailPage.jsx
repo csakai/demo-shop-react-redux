@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { readySelector, detailItemSelector } from '../selectors/shop.selector';
 import { getItems, setDetailId } from '../reducers/shop';
-import ItemDetailPage from '../components/ItemDetailPage.jsx';
+import ItemDetailPage from '../components/detail/ItemDetailPage.jsx';
 
 const mapStateToProps = state => ({
     ready: readySelector(state),
