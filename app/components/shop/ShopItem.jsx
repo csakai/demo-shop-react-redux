@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import beautifyCurrency from '../../util/beautifyCurrency';
-import AddToCart from '../../containers/ConnectedAddToCart.jsx';
+import AddToCart from '../../containers/add_to_cart/ConnectedAddToCart.jsx';
 
 const ShopItem = ({item}) => (
     <div className="shop-item-container">

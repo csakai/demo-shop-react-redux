@@ -5,7 +5,7 @@ import cn from 'classnames';
 
 import beautifyCurrency from '../util/beautifyCurrency';
 import ItemDetailImageCarousel from './ItemDetailImageCarousel.jsx';
-import AddToCart from '../containers/ConnectedAddToCart.jsx';
+import AddToCart from '../containers/add_to_cart/ConnectedAddToCart.jsx';
 
 class ItemDetailPage extends React.Component {
     constructor(props) {

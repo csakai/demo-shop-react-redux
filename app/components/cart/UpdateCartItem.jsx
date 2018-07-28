@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import beautifyCurrency from '../../util/beautifyCurrency';
-import QuantityStepper from '../QuantityStepper.jsx';
+import QuantityStepper from '../quantity_stepper/QuantityStepper.jsx';
 
 class UpdateCartItem extends React.Component {
     constructor(props) {

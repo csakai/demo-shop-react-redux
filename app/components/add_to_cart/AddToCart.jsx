@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import QuantityStepper from './QuantityStepper.jsx';
+import QuantityStepper from '../quantity_stepper/QuantityStepper.jsx';
 
 class AddToCart extends React.Component {
     constructor(props) {
