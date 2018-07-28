@@ -6,7 +6,7 @@ import {
     cartItemsTotalDisplaySelector
 } from '../selectors/cart.selector';
 
-import CartDetails from '../components/CartDetails.jsx';
+import CartDetails from '../components/cart/CartDetails.jsx';
 
 const mapStateToProps = state => ({
     subtotal: cartItemsSubtotalDisplaySelector(state),

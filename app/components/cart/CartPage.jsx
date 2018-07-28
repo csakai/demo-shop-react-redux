@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import CartItemList from '../containers/ConnectedCartItemList.jsx';
-import CartDetails from '../containers/ConnectedCartDetails.jsx';
-import Checkout from '../containers/ConnectedCheckout.jsx';
+import CartItemList from '../../containers/ConnectedCartItemList.jsx';
+import CartDetails from '../../containers/ConnectedCartDetails.jsx';
+import Checkout from '../../containers/ConnectedCheckout.jsx';
 
 const CartPage = ({hasItems}) => (
     <div className="cart-page-container">

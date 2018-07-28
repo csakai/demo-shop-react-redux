@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import UpdateCartItem from '../containers/ConnectedUpdateCartItem.jsx';
+import UpdateCartItem from '../../containers/ConnectedUpdateCartItem.jsx';
 
 const CartItem = ({item}) => (
     <div className="cart-item">

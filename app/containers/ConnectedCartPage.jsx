@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { hasItemsSelector } from '../selectors/cart.selector';
-import CartPage from '../components/CartPage.jsx';
+import CartPage from '../components/cart/CartPage.jsx';
 
 const mapStateToProps = state => ({
     hasItems: hasItemsSelector(state)
