@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import beautifyCurrency from '../util/beautifyCurrency';
 import AddToCart from '../containers/ConnectedAddToCart.jsx';
@@ -29,3 +29,9 @@ const ShopItem = ({item}) => (
         />
     </div>
 );
+
+ShopItem.propTypes = {
+    item: PropTypes.object
+};
+
+export default ShopItem;

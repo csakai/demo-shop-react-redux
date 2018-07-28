@@ -9,10 +9,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    loadPage: dispatch => dispatch(getItems())
+    loadPage: () => dispatch(getItems())
 });
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ShopPage)
+)(ShopPage);

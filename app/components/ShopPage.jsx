@@ -9,7 +9,7 @@ class ShopPage extends React.Component {
     }
 
     componentDidMount() {
-        this.loadPage();
+        this.props.loadPage();
     }
 
     render() {

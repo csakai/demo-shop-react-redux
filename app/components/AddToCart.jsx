@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import QuantityStepper from './QuantityStepper.jsx';
+
 class AddToCart extends React.Component {
     constructor(props) {
         super(props);
@@ -11,16 +13,6 @@ class AddToCart extends React.Component {
         };
         this.handleQuantityChange = this.handleQuantityChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
-    }
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.showWarning) {
-            setTimeout(() => this.setState(prevState => (
-                {
-                    ...prevState,
-                    showWarning: false
-                }
-            )), 1000);
-        }
     }
     handleQuantityChange(newValue) {
         this.setState(prevState => (
@@ -47,7 +39,16 @@ class AddToCart extends React.Component {
                     ...prevState,
                     showWarning: true
                 }
-            ));
+            ), () => {
+                if (this.state.showWarning) {
+                    setTimeout(() => this.setState(prevState => (
+                        {
+                            ...prevState,
+                            showWarning: false
+                        }
+                    )), 1000);
+                }
+            });
         }
     }
 
