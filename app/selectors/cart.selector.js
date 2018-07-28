@@ -13,12 +13,12 @@ export const cartItemsWithDetailsSelector = createSelector(
     shopItemsSelector,
     cartItemsSelector,
     (shopItems, cartItems) => {
-        const cartItemsHash = cartItems.reduce((acc, item, index) => ({
-                ...acc,
-                [item.id]: {
-                    ...item
-                }
-            }), {});
+        const cartItemsHash = cartItems.reduce((acc, item) => ({
+            ...acc,
+            [item.id]: {
+                ...item
+            }
+        }), {});
         shopItems.forEach(({id, price, title}) => {
             if (cartItemsHash[id]) {
                 cartItemsHash[id].price = price;
@@ -46,7 +46,7 @@ const cartItemsTaxSelector = createSelector(
     cartItemsSubtotalSelector,
     cartItemsSubtotal => {
         const rawTax = cartItemsSubtotal * 0.08875;
-        return Number.parseFloat((rawTax-(rawTax%.01)).toFixed(2));
+        return Number.parseFloat((rawTax - (rawTax % 0.01)).toFixed(2));
     }
 );
 
@@ -57,7 +57,7 @@ const cartItemsTotalSelector = createSelector(
     cartItemsTaxSelector,
     cartItemsShippingSelector,
     (cartItemsSubtotal, cartItemsTax, cartItemsShipping) => {
-        return (cartItemsSubtotal + cartItemsTax + cartItemsShipping).toFixed(2);
+        return Number.parseFloat((cartItemsSubtotal + cartItemsTax + cartItemsShipping).toFixed(2));
     }
 );
 
