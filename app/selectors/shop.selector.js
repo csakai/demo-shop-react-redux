@@ -6,6 +6,10 @@ const loadedSelector = state => state.shop.loaded;
 
 const detailIdSelector = state => state.shop.detailId;
 
+export const initLoadedSelector = createSelector(
+    loadingSelector,
+    loadedSelector,
+    (loading, loaded) => !loading && loaded);
 
 export const detailItemSelector = createSelector(
     itemsSelector,

@@ -9,7 +9,9 @@ class ShopPage extends React.Component {
     }
 
     componentDidMount() {
-        this.props.loadPage();
+        if (!this.props.loaded) {
+            this.props.loadPage();
+        }
     }
 
     render() {
@@ -32,6 +34,7 @@ class ShopPage extends React.Component {
 
 ShopPage.propTypes = {
     loadPage: PropTypes.func,
+    loaded: PropTypes.bool,
     loading: PropTypes.bool
 };
 
