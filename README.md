@@ -1,58 +1,155 @@
-![](http://jpsierens.com/wp-content/uploads/2016/06/react-eco-wp.gif)
+# Coding Challenge: Shopping Cart
 
-# webpack-react-redux
-A boilerplate for playing around with react, redux and react-router with the help of webpack.
+## Overview
 
-Contains: 
+Build an application, using the framework of your choice (excluding jQuery), that implements a product gallery and a shopping cart. The application must exist as a single page application, that is, served from a single HTML file and handle its own routing.
 
-* a working example of a filterable table which you can play around with (look below).
-* ES6 - 7 Support with Babel
-* Redux dev tools to help you keep track of the app's state
-* Routing
-* hot module replacement support so you can change modules or react components without having to reload the browser
-* a webpack production config so you can build the app and make it ready for production
-* Sass support, just import your styles wherever you need them
-* eslint to keep your js readable
-* much more...
+The “home” page is the product listing. The product detail page URL should have the format `/detail/{id}` , where `id` is the product ID (see API response below). Finally, the shopping cart page URL should be `/cart` .
 
+## API
 
+The coding challenge comes with an API to help you build your app. It is written in Node.js. To get it up and running, you need to install the latest version of Node (at the time of writing, tested with v7.7.4). I recommend using nvm. You can follow the install instructions [here](https://github.com/creationix/nvm#installation).
 
-![](http://jpsierens.com/wp-content/uploads/2016/06/filterableTable-1.gif)
+Once you have Node installed, run the following commands in your terminal:
 
+```bash
+npm install
+node index.js
+```
 
-## Run the app
+You should see a message like this:
 
-0. ```npm install```
-0. ```npm start```
+```
+Shopping Cart API app listening on port 3001!
+```
 
-Once running, if you want to hide the redux dev monitor: ```CTRL+H```
+You can now access the API from this URL: `http://locahost:3001/`. The API includes two routes:
 
-Yes, it takes a while to load the first time you open the app.
+### `/get-items`
 
-### Is the hot module replacement really working?
+This route accepts no parameters, is a `GET` request, and returns a list of all the items available in the store. The response has the following format:
 
-Yup! Take a look:
+```JSON
+[
+	{
+		"id": "25243",
+		"title": "Product Name",
+		"description": "Some text here to describe the product in detail.",
+		"thumbnail": "http://example.com/25243/thumb.jpg",
+		"price": 99.99,
+		"inStock": true,
+		"images": [
+			"http://example.com/25243/product-1.jpg",
+			"http://example.com/25243/product-2.jpg",
+			"http://example.com/25243/product-3.jpg",
+		],
+		"reviews": [
+			{
+				"title": "Foobar",
+				"body": "Review text goes here.",
+				"author": "Some Person",
+				"rating": 3,
+			},
+			{
+				"title": "Bazqux",
+				"body": "Review text goes here.",
+				"author": "Another Person",
+				"rating": 5,
+			}
+		],
+		"tags": [
+			"Foo",
+			"Bar",
+			"Baz"
+		]
+	}
+]
+```
 
-![](http://jpsierens.com/wp-content/uploads/2016/06/HMR4.gif)
+### `/checkout`
 
-The app updates without the browser having to reload. You don't lose state!
+The checkout route is a `POST` and accepts a JSON payload of the following shape:
 
-## Build the app
-```npm run build```
+```JSON
+{
+	"items": [
+		{ "id": "25243", "quantity": 3 },
+		{ "id": "32453", "quantity": 1 }
+	]
+}
+```
 
-This will build the app into the "dist" directory in the root of the project. It contains the index.html along with the minified assets, ready for production.
+If the request is successful, you will receive a `200` response back. If not, it will come back as a `400`.
 
-![](http://i.imgur.com/uUg2A3S.png)
+#### Success
 
-It should look something like the above image.
+```JSON
+{
+	"status": "success",
+	"message": "Your order was placed successfully",
+}
+```
 
-## I don't understand anything!
+#### Error
 
-I went ahead and wrote a detailed series of posts on this project for you. I hope it helps you understand better:
+```JSON
+{
+	"status": "error",
+	"error": "Invalid request."
+}
+```
 
-* [configuring webpack](http://jpsierens.com/tutorial-react-redux-webpack/)
-* [understanding the app, part 1 (index.js, store, reducers)](http://jpsierens.com/simple-react-redux-application/)
-* [understanding the app, part 2 ( Root.js, router and the rest of the app)](http://jpsierens.com/simple-react-redux-application-2/)
+## Criteria
 
-## Why doesn't it have async?
-To keep it unopinionated. You choose what async library you want. If you want to check out a full example with async in it, check this simple [todo-app](https://github.com/jpsierens/todo-app) that uses redux-sagas.
+The application consists of three main areas:
+
+### Product Listing
+
+The product listing area consists of products that the store offers. Each item must contain:
+
+- Title
+- Thumbnail Image
+- Price
+- Quantity to purchase
+- “Add to Cart” button
+
+Items can be displayed in a vertical list or grid. If you click on the item title, you are taken to a product detail page.
+
+#### Bonus
+
+Display the items in a grid and make it responsive: 768 px and above, display the items in grid of max four items per row. Below 768, stack items, 1 per row.
+
+### Product Detail
+
+The product detail page displays the information of single product. It should include:
+
+- Title
+- Price
+- Image(s)
+- In stock status (In stock/Out of stock)
+- Description
+- Quantity to purchase
+- “Add to Cart” button
+- Reviews (out of 5)
+
+#### Bonus
+
+Each item in the data set includes an array of tags that categorize this product. Display these tags as clickable items, that when clicked, load the product listing page filtered for only items containing that tag.
+
+### Shopping Cart
+
+The shopping cart lists all of the items the user wishes to purchase. Each item in the list shows:
+
+- Title
+- Quantity (with the ability to adjust)
+- Price
+- "Remove” button
+
+In addition to the list, there should be a running sub-total of the entire purchase, including a breakdown of the tax (assume NY state tax rate of 8.875%), shipping (assume fixed rate of $9.99), and a grand total. Changes to the items in the cart should immediately be reflected in the price breakdown. When the user clicks on “Proceed to Checkout”, the contents of the shopping cart are sent via `POST` to `/checkout` (see above for details).
+
+## Evaluation
+
+Your solution will be evaluated on completeness, code clarity, and design. In particular, what design decisions we made to construct each of the above views in terms of components, state, route handling, and separation of concerns. You will not be evaluated on CSS. The focus of the solution should be on how your code is structured, not how the final product looks in the browser (however, if you can make it look great, that’s a bonus, especially if you opt for the bonus item on the product listing page. Note, however, a good looking solution that does not function is not a solution).
+
+_Good luck and have fun!_
+
