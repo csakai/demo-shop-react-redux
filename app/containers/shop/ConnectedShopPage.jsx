@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { loadingSelector as shopLoadingSelector } from '../selectors/shop.selector';
-import { getItems } from '../reducers/shop';
-import ShopPage from '../components/shop/ShopPage.jsx';
+import { loadingSelector as shopLoadingSelector } from '../../selectors/shop.selector';
+import { getItems } from '../../reducers/shop';
+import ShopPage from '../../components/shop/ShopPage.jsx';
 
 const mapStateToProps = state => ({
     loading: shopLoadingSelector(state)

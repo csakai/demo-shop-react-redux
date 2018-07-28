@@ -4,9 +4,9 @@ import {
     cartItemsTaxDisplaySelector,
     cartItemsShippingDisplaySelector,
     cartItemsTotalDisplaySelector
-} from '../selectors/cart.selector';
+} from '../../selectors/cart.selector';
 
-import CartDetails from '../components/cart/CartDetails.jsx';
+import CartDetails from '../../components/cart/CartDetails.jsx';
 
 const mapStateToProps = state => ({
     subtotal: cartItemsSubtotalDisplaySelector(state),

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { checkout } from '../reducers/cart';
-import Checkout from '../components/cart/Checkout.jsx';
+import { checkout } from '../../reducers/cart';
+import Checkout from '../../components/cart/Checkout.jsx';
 
 const mapStateToProps = state => ({
     isError: state.cart.error,

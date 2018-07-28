@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { removeCartItem, updateCartItemQuantity } from '../reducers/cart';
-import UpdateCartItem from '../components/cart/UpdateCartItem.jsx';
+import { removeCartItem, updateCartItemQuantity } from '../../reducers/cart';
+import UpdateCartItem from '../../components/cart/UpdateCartItem.jsx';
 
 const mapDispatchToProps = dispatch => ({
     removeCartItem: id => dispatch(removeCartItem(id)),
