@@ -5,7 +5,7 @@ import cn from 'classnames';
 import beautifyCurrency from '../util/beautifyCurrency';
 import AddToCart from '../containers/ConnectedAddToCart.jsx';
 
-class ItemDetail extends React.Component {
+class ItemDetailPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,15 +17,19 @@ class ItemDetail extends React.Component {
 
     componentDidMount() {
         const {
-            item,
+            getItems,
             match: {
                 params: {
                     id
                 }
             },
+            ready,
             setDetailId
         } = this.props;
         setDetailId(id);
+        if (!ready) {
+            getItems();
+        }
     }
 
     componentWillUnmount() {
@@ -54,57 +58,71 @@ class ItemDetail extends React.Component {
     }
     render() {
         const {
-            item
+            item,
+            ready
         } = this.props;
         const {
             imageIndex
         } = this.state;
         return (
-            <div className="item-detail-container">
-                <div className="item-detail-col">
-                    <h1 className="item-detail-title">
-                        {item.title}
-                    </h1>
-                    <div className="item-detail-image-carousel">
-                        <button
-                            className="item-detail-image-carousel-prev"
-                            onClick={this.handleImagePrev}>
-                            &lt;
-                        </button>
-                        <img src={item.images[imageIndex]} />
-                        <button
-                            className="item-detail-image-carousel-next"
-                            onClick={this.handleImageNext}>
-                            &gt;
-                        </button>
+            <div>
+                {!ready && (
+                    <div className="loading-screen">
+                        Loading...
                     </div>
-                    <div className="item-detail-description">
-                        {item.description}
+                )}
+                {ready && (
+                    <div className="item-detail-container">
+                        <div className="item-detail-col">
+                            <h1 className="item-detail-title">
+                                {item.title}
+                            </h1>
+                            <div className="item-detail-image-carousel">
+                                <button
+                                    className="item-detail-image-carousel-prev"
+                                    onClick={this.handleImagePrev}>
+                                    &lt;
+                                </button>
+                                <img src={item.images[imageIndex]} />
+                                <button
+                                    className="item-detail-image-carousel-next"
+                                    onClick={this.handleImageNext}>
+                                    &gt;
+                                </button>
+                            </div>
+                            <div className="item-detail-description">
+                                {item.description}
+                            </div>
+                        </div>
+                        <div className="item-detail-col">
+                            <div className={cn('item-detail-stock-alert', {
+                                'in-stock': item.inStock,
+                                'out-of-stock': !item.inStock
+                            })}>
+                                {item.inStock && 'In Stock!'}
+                                {!item.inStock && 'Out of Stock'}
+                            </div>
+                            <div className="item-detail-price">
+                                {beautifyCurrency(item.price)}
+                            </div>
+                            <AddToCart
+                                id={item.id}
+                                inStock={item.inStock}
+                            />
+                        </div>
                     </div>
-                </div>
-                <div className="item-detail-col">
-                    <div className={cn('item-detail-stock-alert', {
-                        'in-stock': item.inStock,
-                        'out-of-stock': !item.inStock
-                    })}>
-                        {item.inStock && "In Stock!"}
-                        {!item.inStock && "Out of Stock"}
-                    </div>
-                    <div className="item-detail-price">
-                        {beautifyCurrency(item.price)}
-                    </div>
-                    <AddToCart
-                        id={item.id}
-                        inStock={item.inStock}
-                    />
-                </div>
+                )}
             </div>
         );
     }
 }
 
-ItemDetail.propTypes = {
-    item: PropTypes.object
+ItemDetailPage.propTypes = {
+    getItems: PropTypes.func,
+    item: PropTypes.object,
+    match: PropTypes.object,
+    ready: PropTypes.bool,
+    setDetailId: PropTypes.func
 };
 
-export default ItemDetail;
+export default ItemDetailPage;

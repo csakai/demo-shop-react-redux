@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const CartDetails = ({
     subtotal,
@@ -25,10 +26,10 @@ const CartDetails = ({
 );
 
 CartDetails.propTypes = {
-    subtotal: PropTypes.number,
-    tax: PropTypes.number,
-    shipping: PropTypes.number,
-    total: PropTypes.number
+    subtotal: PropTypes.string,
+    tax: PropTypes.string,
+    shipping: PropTypes.string,
+    total: PropTypes.string
 };
 
 export default CartDetails;

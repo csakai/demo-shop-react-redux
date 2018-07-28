@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react'
+import React from 'react';
 
 class Checkout extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.handleClick = this.handleClick.bind(this);
     }
 

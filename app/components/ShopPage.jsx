@@ -17,9 +17,6 @@ class ShopPage extends React.Component {
 
         return (
             <div className="shop-page-container">
-                <h1 className="page-title">
-                    Demo Shop
-                </h1>
                 {loading && (
                     <div className="loading-screen">
                         Shop loading...

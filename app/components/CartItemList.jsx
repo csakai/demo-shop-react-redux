@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import React from 'react';
 import CartItem from './CartItem.jsx';
 
 const CartItemList = ({items}) => (
