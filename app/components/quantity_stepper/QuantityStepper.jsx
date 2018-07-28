@@ -10,7 +10,7 @@ class QuantityStepper extends React.Component {
     handleChange(event) {
         const { onChange } = this.props;
         let newValue = Number.parseInt(event.target.value, 10);
-        const wasOutOfBounds = newValue < 1;
+        const wasOutOfBounds = Number.isNaN(newValue) || newValue < 1;
         if (wasOutOfBounds) {
             newValue = 1;
         }
