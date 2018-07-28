@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import ShopPage from './containers/ConnectedShopPage.jsx';
+import ShopPage from './containers/shop/ConnectedShopPage.jsx';
 import ItemDetailPage from './containers/ConnectedItemDetailPage.jsx';
 import CartPage from './containers/ConnectedCartPage.jsx';
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import ShopItemList from '../../containers/ConnectedShopItemList.jsx';
+import ShopItemList from '../../containers/shop/ConnectedShopItemList.jsx';
 
 class ShopPage extends React.Component {
     constructor(props) {
