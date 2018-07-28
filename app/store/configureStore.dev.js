@@ -3,7 +3,7 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
-import DevTools from '../containers/DevTools';
+import DevTools from '../containers/DevTools.jsx';
 
 export const history = createHistory();
 const router = routerMiddleware(history);

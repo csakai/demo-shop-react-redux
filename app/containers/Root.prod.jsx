@@ -3,7 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 
-import App from '../components/App';
+import App from '../components/App.jsx';
 
 export default function Root({store, history}) {
     return (

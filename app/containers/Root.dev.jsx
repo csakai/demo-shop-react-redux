@@ -3,8 +3,8 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {ConnectedRouter} from 'react-router-redux';
 
-import App from '../components/App';
-import DevTools from './DevTools';
+import App from '../components/App.jsx';
+import DevTools from './DevTools.jsx';
 
 export default function Root({store, history}) {
     return (
