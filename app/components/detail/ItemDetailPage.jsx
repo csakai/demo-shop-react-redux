@@ -4,16 +4,12 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import beautifyCurrency from '../util/beautifyCurrency';
+import ItemDetailImageCarousel from './ItemDetailImageCarousel.jsx';
 import AddToCart from '../containers/ConnectedAddToCart.jsx';
 
 class ItemDetailPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            imageIndex: 0
-        };
-        this.handleImageNext = this.handleImageNext.bind(this);
-        this.handleImagePrev = this.handleImagePrev.bind(this);
     }
 
     componentDidMount() {
@@ -40,31 +36,11 @@ class ItemDetailPage extends React.Component {
         setDetailId('');
     }
 
-    handleImageNext() {
-        this.setState((prevState, props) => (
-            {
-                imageIndex: (prevState.imageIndex + 1) % props.item.images.length
-            }
-        ));
-    }
-
-    handleImagePrev() {
-        this.setState((prevState, props) => {
-            const imageCount = props.item.images.length;
-            const prevIndex = imageCount + prevState.imageIndex - 1;
-            return {
-                imageIndex: prevIndex % imageCount
-            };
-        });
-    }
     render() {
         const {
             item,
             ready
         } = this.props;
-        const {
-            imageIndex
-        } = this.state;
         return (
             <div>
                 {!ready && (
@@ -78,19 +54,7 @@ class ItemDetailPage extends React.Component {
                             <h1 className="item-detail-title">
                                 {item.title}
                             </h1>
-                            <div className="item-detail-image-carousel">
-                                <button
-                                    className="item-detail-image-carousel-prev"
-                                    onClick={this.handleImagePrev}>
-                                    &lt;
-                                </button>
-                                <img src={item.images[imageIndex]} />
-                                <button
-                                    className="item-detail-image-carousel-next"
-                                    onClick={this.handleImageNext}>
-                                    &gt;
-                                </button>
-                            </div>
+                            <ItemDetailImageCarousel images={item.images} />
                             <div className="item-detail-description">
                                 {item.description}
                             </div>
