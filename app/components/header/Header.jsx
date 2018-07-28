@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import style from './style.scss';
+
 const Header = () => (
-    <div className="header">
+    <div className={style.header}>
         <Link to="/">
-            <h1 className="page-title">
+            <h1 className={style.pageTitle}>
                 Demo Shop
             </h1>
         </Link>
-        <div className="cart-button-container">
+        <div className={style.cartButtonContainer}>
             <Link to="/cart">
                 Go to Cart
             </Link>
