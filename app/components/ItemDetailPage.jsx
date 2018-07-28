@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import beautifyCurrency from '../util/beautifyCurrency';
@@ -112,6 +113,9 @@ class ItemDetailPage extends React.Component {
                         </div>
                     </div>
                 )}
+                <Link to="/">
+                    See all items
+                </Link>
             </div>
         );
     }
