@@ -11,7 +11,7 @@ const Header = () => (
             </h1>
         </Link>
         <div className={style.cartButtonContainer}>
-            <Link to="/cart">
+            <Link to="/cart" className={style.cartButtonLink}>
                 Go to Cart
             </Link>
         </div>
