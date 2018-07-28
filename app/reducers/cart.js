@@ -41,7 +41,7 @@ export const updateCartItemQuantity = (id, quantity) => ({
 export const checkout = () => {
     return (dispatch, getState) => {
         dispatch({type: CHECKOUT_REQUEST});
-        api.checkout(getState().items)
+        api.checkout(getState().cart.items)
             .then(data => dispatch({
                 type: CHECKOUT_REQUEST_SUCCESS,
                 payload: data

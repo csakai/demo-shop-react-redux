@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import cn from 'classnames';
 
+import style from './style.scss';
 class ItemDetailImageCarousel extends React.Component {
     constructor(props) {
         super(props);
@@ -36,15 +38,17 @@ class ItemDetailImageCarousel extends React.Component {
             imageIndex
         } = this.state;
         return (
-            <div className="item-detail-image-carousel">
+            <div className={style.itemDetailImageCarousel}>
                 <button
-                    className="item-detail-image-carousel-prev"
+                    className={cn(style.itemDetailImageCarouselControl,
+                        style.itemDetailImageCarouselPrev)}
                     onClick={this.handleImagePrev}>
                     &lt;
                 </button>
                 <img src={images[imageIndex]} />
                 <button
-                    className="item-detail-image-carousel-next"
+                    className={cn(style.itemDetailImageCarouselControl,
+                        style.itemDetailImageCarouselNext)}
                     onClick={this.handleImageNext}>
                     &gt;
                 </button>

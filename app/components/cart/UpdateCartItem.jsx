@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import beautifyCurrency from '../../util/beautifyCurrency';
 import QuantityStepper from '../quantity_stepper/QuantityStepper.jsx';
+import style from './style.scss';
 
 class UpdateCartItem extends React.Component {
     constructor(props) {
@@ -42,11 +42,11 @@ class UpdateCartItem extends React.Component {
     }
 
     render() {
-        const { price, quantity } = this.props;
+        const { quantity } = this.props;
         const { showWarning } = this.state;
         return (
-            <div>
-                <div className="cart-item-quantity">
+            <div className={style.updateCartItemContainer}>
+                <div className={style.cartItemQuantity}>
                     <QuantityStepper
                         onChange={this.handleQuantityChange}
                         quantity={quantity}
@@ -59,11 +59,9 @@ class UpdateCartItem extends React.Component {
                         </div>
                     }
                 </div>
-                <div className="cart-item-price">
-                    {beautifyCurrency(price)}
-                </div>
                 <div className="cart-item-remove">
                     <button
+                        className={style.cartItemRemoveButton}
                         onClick={this.handleClick}>
                         Remove Item
                     </button>
@@ -74,7 +72,6 @@ class UpdateCartItem extends React.Component {
 }
 UpdateCartItem.propTypes = {
     id: PropTypes.string,
-    price: PropTypes.number,
     quantity: PropTypes.number,
     updateCartItemQuantity: PropTypes.func,
     removeCartItem: PropTypes.func

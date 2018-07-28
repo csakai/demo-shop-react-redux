@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import CartItem from './CartItem.jsx';
+import style from './style.scss';
 
 const CartItemList = ({items}) => (
-    <div className="cart-item-list-container">
-        <div className="cart-item-list-header">
-            <div className="cart-item-title">
+    <div className={style.cartItemListContainer}>
+        <div className={style.cartItemListHeader}>
+            <div className={style.cartItemTitle}>
                 Product
             </div>
-            <div className="cart-item-quantity">
-                Quantity
-            </div>
-            <div className="cart-item-price">
+            <div className={style.cartItemPrice}>
                 Price
             </div>
-            <div className="cart-item-remove">
+            <div className={style.cartItemQuantity}>
+                Quantity
+            </div>
+            <div className={style.cartItemRemove}>
                 Remove Item?
             </div>
         </div>

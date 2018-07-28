@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import cn from 'classnames';
+
+import style from './style.scss';
 
 class Checkout extends React.Component {
     constructor(props) {
@@ -21,12 +24,15 @@ class Checkout extends React.Component {
         return (
             <div className="cart-checkout-container">
                 <button
-                    className="cart-checkout-button"
+                    className={style.cartCheckoutButton}
                     onClick={this.handleClick}>
                     Checkout
                 </button>
                 {message && (
-                    <div className={isError ? 'checkout-error' : 'checkout-success'}>
+                    <div className={cn(style.checkoutMessage, {
+                        [style.checkoutError]: isError,
+                        [style.checkoutSuccess]: !isError
+                    })}>
                         {message}
                     </div>
                 )}

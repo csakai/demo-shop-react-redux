@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import cn from 'classnames';
+import style from './style.scss';
 
 const CartDetails = ({
     subtotal,
@@ -8,20 +10,38 @@ const CartDetails = ({
     total
 }) => (
     <div className="cart-details">
-        <ul>
-            <li className="cart-price-subtotal">
+        <div className={style.cartDetailContainer}>
+            <div className={style.cartDetailTitle}>
+                Subtotal
+            </div>
+            <div className={style.cartDetailPrice}>
                 {subtotal}
-            </li>
-            <li className="cart-price-tax">
+            </div>
+        </div>
+        <div className={style.cartDetailContainer}>
+            <div className={style.cartDetailTitle}>
+                Tax
+            </div>
+            <div className={style.cartDetailPrice}>
                 {tax}
-            </li>
-            <li className="cart-price-shipping">
+            </div>
+        </div>
+        <div className={style.cartDetailContainer}>
+            <div className={style.cartDetailTitle}>
+                Shipping
+            </div>
+            <div className={style.cartDetailPrice}>
                 {shipping}
-            </li>
-            <li className="cart-price-total">
+            </div>
+        </div>
+        <div className={cn(style.cartDetailContainer, style.cartTotal)}>
+            <div className={style.cartDetailTitle}>
+                Total
+            </div>
+            <div className={style.cartDetailPrice}>
                 {total}
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
 );
 

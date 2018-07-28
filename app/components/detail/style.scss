@@ -1,0 +1,49 @@
+.itemDetailContainer {
+    display: flex;
+}
+
+.itemDetailTitle {
+    margin: 0 20px;
+}
+.itemDetailStockAlert {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    width: 100px;
+    &.inStock {
+        color: green;
+    }
+    &.outOfStock {
+        color: red;
+    }
+}
+
+.itemDetailImageCarousel {
+    display: flex;
+    align-items: stretch;
+}
+
+.itemDetailImageCarouselControl {
+    border-radius: 15px;
+    border-style: none;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        background-color: gray;
+        color: black;
+    }
+}
+
+.itemDetailImageCarouselPrev {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.itemDetailImageCarouselNext {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}

@@ -6,6 +6,7 @@ import cn from 'classnames';
 import beautifyCurrency from '../../util/beautifyCurrency';
 import ItemDetailImageCarousel from './ItemDetailImageCarousel.jsx';
 import AddToCart from '../../containers/add_to_cart/ConnectedAddToCart.jsx';
+import style from './style.scss';
 
 class ItemDetailPage extends React.Component {
     constructor(props) {
@@ -49,9 +50,9 @@ class ItemDetailPage extends React.Component {
                     </div>
                 )}
                 {ready && (
-                    <div className="item-detail-container">
+                    <div className={style.itemDetailContainer}>
                         <div className="item-detail-col">
-                            <h1 className="item-detail-title">
+                            <h1 className={style.itemDetailTitle}>
                                 {item.title}
                             </h1>
                             <ItemDetailImageCarousel images={item.images} />
@@ -60,9 +61,9 @@ class ItemDetailPage extends React.Component {
                             </div>
                         </div>
                         <div className="item-detail-col">
-                            <div className={cn('item-detail-stock-alert', {
-                                'in-stock': item.inStock,
-                                'out-of-stock': !item.inStock
+                            <div className={cn(style.itemDetailStockAlert, {
+                                [style.inStock]: item.inStock,
+                                [style.outOfStock]: !item.inStock
                             })}>
                                 {item.inStock && 'In Stock!'}
                                 {!item.inStock && 'Out of Stock'}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import QuantityStepper from '../quantity_stepper/QuantityStepper.jsx';
+import style from './style.scss';
 
 class AddToCart extends React.Component {
     constructor(props) {
@@ -56,7 +57,7 @@ class AddToCart extends React.Component {
         const { inStock } = this.props;
         const { quantity, showWarning } = this.state;
         return (
-            <div>
+            <div className={style.itemCartContainer}>
                 <div className="item-quantity">
                     <QuantityStepper
                         isDisabled={!inStock}
@@ -66,14 +67,14 @@ class AddToCart extends React.Component {
                 </div>
                 <div className="item-cart-add">
                     <button
-                        className={cn('add-to-cart-button', {
-                            'disabled': !inStock
+                        className={cn(style.addToCartButton, {
+                            [style.disabled]: !inStock
                         })}
                         onClick={this.handleClick}>
                         Add To Cart
                     </button>
                     {showWarning && (
-                        <div className="warning">
+                        <div className={style.warning}>
                             Sorry, this item is out of stock
                         </div>
                     )}

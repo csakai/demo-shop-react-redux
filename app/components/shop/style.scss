@@ -1,0 +1,29 @@
+.shopItemListContainer {
+}
+.shopItemContainer, .shopItemListHeader {
+    display: flex;
+    border-bottom: solid 1px black;
+    margin-bottom: 5px;
+}
+
+.shopItemTitle, .shopItemTitleWithThumbnail {
+    margin: 0 20px;
+    width: 200px;
+}
+
+.shopItemTitleWithThumbnail {
+    border: solid 1px black;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.shopItemListHeader {
+    .shopItemTitle, .shopItemPrice {
+        text-align: center;
+    }
+}
+.shopItemPrice {
+    width: 50px;
+    margin: 0 20px;
+    text-align: right;
+}
