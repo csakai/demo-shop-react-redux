@@ -10,7 +10,8 @@ class AddToCart extends React.Component {
         super(props);
         this.state = {
             quantity: 1,
-            showWarning: false
+            showWarning: false,
+            showConfirm: false
         };
         this.handleQuantityChange = this.handleQuantityChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -29,11 +30,23 @@ class AddToCart extends React.Component {
             id,
             inStock
         } = this.props;
-        const {
-            quantity
-        } = this.state;
+        const { quantity } = this.state;
         if (inStock) {
             addToCart(id, quantity);
+            this.setState(prevState => ({
+                ...prevState,
+                showConfirm: true
+            }), () => {
+                if (this.state.showConfirm) {
+                    setTimeout(() => this.setState(prevState => (
+                        {
+                            ...prevState,
+                            showConfirm: false,
+                            quantity: 1
+                        }
+                    )), 1000);
+                }
+            });
         } else {
             this.setState(prevState => (
                 {
@@ -55,7 +68,7 @@ class AddToCart extends React.Component {
 
     render() {
         const { inStock, containerStyle } = this.props;
-        const { quantity, showWarning } = this.state;
+        const { quantity, showConfirm, showWarning } = this.state;
         return (
             <div className={containerStyle || style.itemCartContainer}>
                 <div className="item-quantity">
@@ -70,9 +83,15 @@ class AddToCart extends React.Component {
                         className={cn(style.addToCartButton, {
                             [style.disabled]: !inStock
                         })}
-                        onClick={this.handleClick}>
+                        onClick={this.handleClick}
+                        disabled={showConfirm}>
                         Add To Cart
                     </button>
+                    {showConfirm && (
+                        <div className={style.confirm}>
+                            {`${quantity} added to cart!`}
+                        </div>
+                    )}
                     {showWarning && (
                         <div className={style.warning}>
                             Sorry, this item is out of stock
