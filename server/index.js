@@ -1,19 +1,20 @@
 const express = require('express');
 const path = require('path');
 const api = require('../mock-api');
+const port = process.env.PORT || 8080;
 
 const app = express();
 
 api(app, '');
 
-app.use('/static', express.static(path.join(__dirname, '../dist/')));
+app.use('/static', express.static(path.resolve(__dirname, '../dist/')));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
+    res.sendFile(path.resolve(__dirname, '../dist/index.html'));
 });
 
-app.listen(process.env.PORT || 80, err => {
+app.listen(port, err => {
     if (err) console.log(err);
 
-    console.log(`Listening on port ${process.env.PORT || 80}!`);
+    console.log(`Listening on port ${port}!`);
 });
