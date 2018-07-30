@@ -5,16 +5,8 @@ import ShopItem from './ShopItem.jsx';
 import style from './style.scss';
 
 const ShopItemList = ({items}) => (
-    <div className="shop-item-list-container">
-        <div className={style.shopItemListHeader}>
-            <div className={style.shopItemTitle}>
-                Product
-            </div>
-            <div className={style.shopItemPrice}>
-                Price
-            </div>
-        </div>
-        <div className="shop-item-list">
+    <div className={style.shopItemListContainer}>
+        <div className={style.shopItemGrid}>
             {items.map(
                 item => (
                     <ShopItem
