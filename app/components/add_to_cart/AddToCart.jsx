@@ -70,10 +70,10 @@ class AddToCart extends React.Component {
     }
 
     render() {
-        const { inStock, containerStyle } = this.props;
+        const { inStock } = this.props;
         const { quantity, showConfirm, showWarning } = this.state;
         return (
-            <div className={containerStyle || style.itemCartContainer}>
+            <div className={style.itemCartContainer}>
                 <div className="item-quantity">
                     <QuantityStepper
                         isDisabled={!inStock}
@@ -108,8 +108,7 @@ class AddToCart extends React.Component {
 AddToCart.propTypes = {
     id: PropTypes.string,
     inStock: PropTypes.bool,
-    addToCart: PropTypes.func,
-    containerStyle: PropTypes.string
+    addToCart: PropTypes.func
 };
 
 

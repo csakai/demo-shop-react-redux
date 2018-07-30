@@ -34,23 +34,12 @@
     padding: 5px;
 }
 
-.itemCartContainer {
-    composes: itemCartContainer from '../add_to_cart/style.scss';
-    flex-direction: column;
-}
-
 .shopItemTitle, .shopItemTitleWithThumbnail {
     margin: 0 20px;
 }
 
 .shopItemTitleWithThumbnail {
 
-}
-
-.shopItemListHeader {
-    .shopItemTitle, .shopItemPrice {
-        text-align: center;
-    }
 }
 
 @media screen and (min-width: 768px) {

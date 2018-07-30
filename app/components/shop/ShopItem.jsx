@@ -28,7 +28,6 @@ const ShopItem = ({item}) => (
             <AddToCart
                 id={item.id}
                 inStock={item.inStock}
-                containerStyle={style.itemCartContainer}
             />
         </div>
     </div>
