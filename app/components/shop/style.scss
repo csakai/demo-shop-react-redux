@@ -6,7 +6,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    min-width: 768px;
     width: 100%;
 }
 .shopItemContainer {
@@ -45,3 +44,13 @@
     }
 }
 
+@media screen and (min-width: 768px) {
+    .shopItemGrid {
+        min-width: 768px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .shopItemContainer, .shopItem {
+        flex-basis: 100%;
+    }
+}
