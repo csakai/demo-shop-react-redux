@@ -6,7 +6,7 @@ export default function queryMiddleware() {
             case '@@router/LOCATION_CHANGE': {
                 const newPayload = {
                     ...action.payload,
-                    query: queryString.parse(action.payload.search)
+                    query: queryString.parse(action.payload.search.substr(1))
                 };
                 const newAction = {
                     ...action,
