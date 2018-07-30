@@ -61,6 +61,18 @@ class ItemDetailPage extends React.Component {
                                 <div className="item-detail-description">
                                     {item.description}
                                 </div>
+                                <div className="item-detail-tags">
+                                    Tags: {item.tags.map((tag, index) => (
+                                        <span key={index}>
+                                            {index > 0 && ', '}
+                                            <Link
+                                                to={`/?tag=${tag}`}
+                                                key={index}>
+                                                {tag}
+                                            </Link>
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                             <div className={style.itemDetailCol}>
                                 <div className={cn(style.itemDetailStockAlert, {

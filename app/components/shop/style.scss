@@ -1,3 +1,12 @@
+.tagHeaderContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    width: 50%;
+    align-items: center;
+}
+
+
 .shopItemListContainer {
     width: 100%;
 }

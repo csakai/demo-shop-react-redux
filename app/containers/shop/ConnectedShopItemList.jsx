@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { itemsSelector as shopItemsSelector } from '../../selectors/shop.selector';
+import { filteredItemsSelector as shopItemsSelector } from '../../selectors/shop.selector';
 
 import ShopItemList from '../../components/shop/ShopItemList.jsx';
 

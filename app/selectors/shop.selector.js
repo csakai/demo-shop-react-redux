@@ -1,6 +1,14 @@
 import { createSelector } from 'reselect';
+import { tagSelector } from './routing.selector';
 
 export const itemsSelector = state => state.shop.items;
+
+export const filteredItemsSelector = createSelector(
+    itemsSelector,
+    tagSelector,
+    (items, tag) => tag && items.filter(({tags}) => tags.includes(tag)) || items
+);
+
 export const loadingSelector = state => state.shop.loading;
 const loadedSelector = state => state.shop.loaded;
 
