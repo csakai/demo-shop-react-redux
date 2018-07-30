@@ -1,7 +1,7 @@
 {
-  "name": "webpack-react-redux",
+  "name": "demo-shop-react-redux",
   "version": "1.0.0",
-  "description": "A boilerplate for playing around with react, redux and react-router with the help of webpack.",
+  "description": "Simple demo shop in react/redux",
   "main": "index.js",
   "scripts": {
     "test": "",
@@ -11,12 +11,15 @@
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint ."
   },
+  "engines": {
+    "yarn": "1.7.0"
+  },
   "keywords": [
     "es6",
     "react",
     "redux"
   ],
-  "author": "Jean-Pierre Sierens",
+  "author": "Chris Sakai",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
