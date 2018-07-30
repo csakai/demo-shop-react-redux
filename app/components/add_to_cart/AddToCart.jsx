@@ -30,7 +30,10 @@ class AddToCart extends React.Component {
             id,
             inStock
         } = this.props;
-        const { quantity } = this.state;
+        const {
+            showWarning,
+            quantity
+        } = this.state;
         if (inStock) {
             addToCart(id, quantity);
             this.setState(prevState => ({
@@ -47,7 +50,7 @@ class AddToCart extends React.Component {
                     )), 1000);
                 }
             });
-        } else {
+        } else if (!showWarning) {
             this.setState(prevState => (
                 {
                     ...prevState,
