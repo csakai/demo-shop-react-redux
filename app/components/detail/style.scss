@@ -78,9 +78,11 @@
 
 .itemDetailReviewRating {
     margin: 5px 0;
+    user-select: none;
 }
 
 .itemDetailReviewStar {
+    user-select: none;
     &.itemDetailReviewStarFilled {
         &:before {
             position: absolute;
