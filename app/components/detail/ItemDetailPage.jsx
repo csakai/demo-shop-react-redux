@@ -52,33 +52,39 @@ class ItemDetailPage extends React.Component {
                 )}
                 {ready && (
                     <div className={style.itemDetailContainer}>
-                        <div className="item-detail-col">
-                            <h1 className={style.itemDetailTitle}>
-                                {item.title}
-                            </h1>
-                            <ItemDetailImageCarousel images={item.images} />
-                            <div className="item-detail-description">
-                                {item.description}
+                        <div className={style.itemDetailRow}>
+                            <div className={style.itemDetailCol}>
+                                <h1 className={style.itemDetailTitle}>
+                                    {item.title}
+                                </h1>
+                                <ItemDetailImageCarousel images={item.images} />
+                                <div className="item-detail-description">
+                                    {item.description}
+                                </div>
                             </div>
-                            <ItemDetailReviewList
-                                reviews={item.reviews}
-                            />
+                            <div className={style.itemDetailCol}>
+                                <div className={cn(style.itemDetailStockAlert, {
+                                    [style.inStock]: item.inStock,
+                                    [style.outOfStock]: !item.inStock
+                                })}>
+                                    {item.inStock && 'In Stock!'}
+                                    {!item.inStock && 'Out of Stock'}
+                                </div>
+                                <div className="item-detail-price">
+                                    {beautifyCurrency(item.price)}
+                                </div>
+                                <AddToCart
+                                    id={item.id}
+                                    inStock={item.inStock}
+                                />
+                            </div>
                         </div>
-                        <div className="item-detail-col">
-                            <div className={cn(style.itemDetailStockAlert, {
-                                [style.inStock]: item.inStock,
-                                [style.outOfStock]: !item.inStock
-                            })}>
-                                {item.inStock && 'In Stock!'}
-                                {!item.inStock && 'Out of Stock'}
+                        <div className={style.itemDetailRow}>
+                            <div className={style.itemDetailCol}>
+                                <ItemDetailReviewList
+                                    reviews={item.reviews}
+                                />
                             </div>
-                            <div className="item-detail-price">
-                                {beautifyCurrency(item.price)}
-                            </div>
-                            <AddToCart
-                                id={item.id}
-                                inStock={item.inStock}
-                            />
                         </div>
                     </div>
                 )}

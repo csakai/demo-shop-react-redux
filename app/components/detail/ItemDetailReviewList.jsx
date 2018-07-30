@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-// import cn from 'classnames';
 
 import ItemDetailReview from './ItemDetailReview.jsx';
 import style from './style.scss';

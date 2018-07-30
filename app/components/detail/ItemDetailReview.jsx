@@ -7,14 +7,8 @@ import style from './style.scss';
 class ItemDetailReview extends React.Component {
     constructor(props) {
         super(props);
-        const ratingStars = [];
-        for (let star = 0; star < props.rating; star++) {
-            ratingStars.push(true);
-        }
-        for (let noStar = 0; noStar < (5 - props.rating); noStar++) {
-            ratingStars.push(false);
-        }
-        this.ratingStars = ratingStars;
+        this.ratingStars = [...Array(5)]
+            .map((_, index) => index < this.props.rating);
     }
     render() {
         const {
@@ -24,24 +18,28 @@ class ItemDetailReview extends React.Component {
         } = this.props;
         return (
             <div className={style.itemDetailReview}>
-                <h1 className={style.itemDetailReviewTitle}>
+                <h2 className={style.itemDetailReviewTitle}>
                     {title}
-                </h1>
+                </h2>
                 <div className={style.itemDetailReviewByLine}>
                     {author}
                 </div>
-                <div className={style.itemDetailReviewRating}>
-                    {this.ratingStars.map((star, index) => (
-                        <div
-                            className={cn(style.itemDetailReviewStar, {
-                                [style.itemDetailReviewStarFilled]: star
-                            })}
-                            key={index}>
-                        </div>
-                    ))}
-                </div>
                 <div className={style.itemDetailReviewBody}>
-                    {body}
+                    <div className={style.itemDetailReviewRating}>
+                        {this.ratingStars.map((star, index) => (
+                            <span
+                                className={cn(style.itemDetailReviewStar, {
+                                    [style.itemDetailReviewStarFilled]: star
+                                })}
+                                key={index}>
+                                {!star && '☆'}
+                                {star && '★'}
+                            </span>
+                        ))}
+                    </div>
+                    <div className={style.itemDetailReviewBodyText}>
+                        {body}
+                    </div>
                 </div>
             </div>
         );
