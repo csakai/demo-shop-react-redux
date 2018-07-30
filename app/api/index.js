@@ -5,7 +5,7 @@ const passData = ({data}) => data;
 const throwErrorData = ({response: { data } }) => { throw data; };
 
 const apiInstance = axios.create({
-    baseURL: '/api'
+    baseURL: process.env.NODE_ENV === 'production' ? '' : '/api'
 });
 // export const items = () => axios.get('/api/get-items')
 const getItems = () => apiInstance.get('/get-items')

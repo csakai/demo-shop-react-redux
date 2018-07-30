@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const items = require('./items');
 
-module.exports = function(app) {
+module.exports = function(app, apiPath='/api') {
     const api = express();
     api.use(cors());
     api.use(bodyParser.json());
@@ -33,5 +33,5 @@ module.exports = function(app) {
 
         res.status(status).json(response);
     });
-    app.use('/api', api);
+    app.use(apiPath, api);
 }

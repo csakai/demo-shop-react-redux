@@ -17,7 +17,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/dist/'),
         filename: '[name]-[hash].min.js',
-        publicPath: '/'
+        publicPath: '/static/'
     },
     plugins: [
         // webpack gives your modules and chunks ids to identify them. Webpack can vary the
@@ -66,14 +66,14 @@ module.exports = {
         // Runs before loaders
         preLoaders: [
             {
-                test: /\.js$/,
+                test: /\.jsx$/,
                 exclude: /node_modules/,
                 loader: 'eslint'
             }
         ],
         // loaders handle the assets, like transforming sass to css or jsx to js.
         loaders: [{
-            test: /\.js?$/,
+            test: /\.jsx?$/,
             exclude: /node_modules/,
             loader: 'babel'
         }, {

@@ -1,7 +1,7 @@
 import createHistory from 'history/createBrowserHistory';
 import { applyMiddleware, createStore, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
-import queryMiddleware from 'react-router-query-middleware';
+import queryMiddleware from '../middlewares/react-router-query-middleware';
 import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 
