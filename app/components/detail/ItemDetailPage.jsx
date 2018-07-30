@@ -5,6 +5,7 @@ import cn from 'classnames';
 
 import beautifyCurrency from '../../util/beautifyCurrency';
 import ItemDetailImageCarousel from './ItemDetailImageCarousel.jsx';
+import ItemDetailReviewList from './ItemDetailReviewList.jsx';
 import AddToCart from '../../containers/add_to_cart/ConnectedAddToCart.jsx';
 import style from './style.scss';
 
@@ -59,6 +60,9 @@ class ItemDetailPage extends React.Component {
                             <div className="item-detail-description">
                                 {item.description}
                             </div>
+                            <ItemDetailReviewList
+                                reviews={item.reviews}
+                            />
                         </div>
                         <div className="item-detail-col">
                             <div className={cn(style.itemDetailStockAlert, {
