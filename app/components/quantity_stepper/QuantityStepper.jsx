@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import style from './style.scss';
+
 class QuantityStepper extends React.Component {
     constructor(props) {
         super(props);
@@ -22,7 +24,7 @@ class QuantityStepper extends React.Component {
 
         return (
             <input
-                className="item-quantity-stepper"
+                className={style.itemQuantityStepper}
                 disabled={isDisabled}
                 type="number"
                 step="1"

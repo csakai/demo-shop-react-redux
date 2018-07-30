@@ -1,0 +1,12 @@
+.itemQuantityStepper {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        opacity: 1;
+    }
+    &:disabled {
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            opacity: 0;
+        }
+    }
+}
