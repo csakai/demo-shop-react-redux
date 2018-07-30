@@ -6,7 +6,7 @@
   "scripts": {
     "test": "",
     "heroku-postbuild": "npm run build",
-    "start": "node server",
+    "start": "node server/index.js",
     "devstart": "node dev-server",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint ."
